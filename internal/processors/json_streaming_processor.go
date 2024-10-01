@@ -44,7 +44,7 @@ func ReadData(ctx context.Context, r io.Reader, dataChan chan any) error {
 
 		// Read the data and send it to the channel.
 		var data any
-		if err := decoder.Decode(&data); err != nil {
+		if err = decoder.Decode(&data); err != nil {
 			return fmt.Errorf("failed to decode json data: %w", err)
 		}
 
