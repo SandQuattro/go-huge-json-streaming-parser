@@ -2,9 +2,10 @@ package handlers
 
 import (
 	"encoding/json"
-	"go-huge-json-streaming-parser/internal/processors"
 	"log"
 	"net/http"
+
+	"go-huge-json-streaming-parser/internal/processors"
 )
 
 // UploadData reads data from Huge JSON / file and processing, using streaming with low memory
@@ -44,7 +45,7 @@ func UploadData(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func RespondOK(data any, w http.ResponseWriter, r *http.Request) {
+func RespondOK(data any, w http.ResponseWriter, _ *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
 	_ = json.NewEncoder(w).Encode(data)
@@ -54,7 +55,7 @@ func BadRequest(slug string, err error, w http.ResponseWriter, r *http.Request) 
 	httpRespondWithError(err, slug, w, r, "Bad request", http.StatusBadRequest)
 }
 
-func httpRespondWithError(err error, slug string, w http.ResponseWriter, r *http.Request, msg string, status int) {
+func httpRespondWithError(err error, slug string, w http.ResponseWriter, _ *http.Request, msg string, status int) {
 	log.Printf("error: %s, slug: %s, msg: %s", err, slug, msg)
 
 	resp := ErrorResponse{slug, status}

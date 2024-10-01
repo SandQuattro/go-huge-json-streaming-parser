@@ -2,11 +2,12 @@ package main
 
 import (
 	"errors"
-	"github.com/gorilla/mux"
-	"go-huge-json-streaming-parser/internal/handlers"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/gorilla/mux"
+	"go-huge-json-streaming-parser/internal/handlers"
 )
 
 func main() {
